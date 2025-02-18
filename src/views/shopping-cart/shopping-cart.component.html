@@ -1,0 +1,48 @@
+<h1>Welcome to the shopping cart</h1>
+
+<br/>
+<br/>
+<b>Enter an item to the items table :</b>
+
+<form [formGroup]="itemForm"  (ngSubmit)="addItem()" >
+  <h2>Insert Item details :</h2>
+
+  <div class="form-group">
+    <label for="code">code: </label>
+    <input id="code" type="text" formControlName="code">
+  </div>
+
+  <div class="form-group">
+    <label for="description">description: </label>
+    <input id="description" type="text" formControlName="description">
+  </div>
+
+  <div class="form-group">
+    <label for="price">State: </label>
+    <input id="price" type="text" formControlName="price">
+  </div>
+  <button type="submit">Insert Item</button>
+</form>
+  <br/>
+  <br/>
+  <ng-container *ngIf="items!=undefined && items.length > 0">
+  <h1>Items table</h1>
+  <table >
+    <tr>
+      <th><b>Code</b></th>
+      <th><b>Description</b></th>
+      <th><b>price</b></th>
+      <th><b>delete item</b></th>
+    </tr>
+    <tr  *ngFor="let item of items">
+      <td>{{item.code}}</td>
+      <td>{{item.description}}</td>
+      <td>{{item.price}}</td>
+      <td>
+        <i class="fas fa-trash" ></i> <!-- Trash icon -->
+      </td>
+    </tr>
+  </table>
+  </ng-container>
+
+<h3>SUM : {{sum}}</h3>
