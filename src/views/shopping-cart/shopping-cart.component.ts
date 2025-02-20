@@ -40,4 +40,8 @@ export class ShoppingCartComponent implements OnInit{
     this.sum=this.sum + Number(this.itemForm.get('price')?.value);
   }
 
+  deleteItem (item : Item) : void {
+
+  }
+
 }

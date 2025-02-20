@@ -39,7 +39,7 @@
       <td>{{item.description}}</td>
       <td>{{item.price}}</td>
       <td>
-        <i class="fas fa-trash" ></i> <!-- Trash icon -->
+        <i class="fas fa-trash" (click)="deleteItem(item)"></i> <!-- Trash icon -->
       </td>
     </tr>
   </table>
