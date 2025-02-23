@@ -34,12 +34,12 @@
       <th><b>price</b></th>
       <th><b>delete item</b></th>
     </tr>
-    <tr  *ngFor="let item of items">
+    <tr  *ngFor="let item of items;let idx=index">
       <td>{{item.code}}</td>
       <td>{{item.description}}</td>
       <td>{{item.price}}</td>
       <td>
-        <i class="fas fa-trash" (click)="deleteItem(item)"></i> <!-- Trash icon -->
+        <i class="fas fa-trash" (click)="deleteItem(item,idx)"></i> <!-- Trash icon -->
       </td>
     </tr>
   </table>

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, signal} from '@angular/core';
 import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {Item} from '../../models/Item';
 import {CommonModule} from '@angular/common';
@@ -12,11 +12,11 @@ import {CommonModule} from '@angular/common';
 })
 export class ShoppingCartComponent implements OnInit{
 
-  items : Item [] = [];
+  items = signal<Item []>([]);
 
   itemForm! : FormGroup;
 
-  sum : number = 0;
+  sum = signal<number>(0);
 
   constructor(private fb : FormBuilder) {
   }
@@ -40,7 +40,10 @@ export class ShoppingCartComponent implements OnInit{
     this.sum=this.sum + Number(this.itemForm.get('price')?.value);
   }
 
-  deleteItem (item : Item) : void {
+  deleteItem (item : Item,idx : number) : void {
+    console.log("The selected item "+JSON.stringify(item)+" in index="+idx);
+    this.items = this.items.filter ((ele,index) => index!=idx);
+    console.log("The elements :"+JSON.stringify(this.items));
 
   }
 
