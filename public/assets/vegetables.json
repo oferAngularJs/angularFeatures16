@@ -1,0 +1,98 @@
+[{
+  "id":1,
+  "code" : "c1",
+  "description" : "cucumbers",
+  "price" : "5.0",
+  "image" : "cucumbers.jpg"
+},
+{
+  "id":2,
+  "code" : "z1",
+  "description" : "Zucchini",
+  "price" : "8.0",
+  "image" : "zucchini.jpg"
+},
+{
+  "id":3,
+  "code" : "t1",
+  "description" : "tomatoes",
+  "price" : "7.0",
+  "image" : "tomatoes.jpg"
+},
+{
+  "id":4,
+  "code" : "p1",
+  "description" : "potatoes",
+  "price" : "5.0",
+  "image" : "potatoes.jpg"
+},
+{
+  "id":5,
+  "code" : "p2",
+  "description" : "sweet peppers",
+  "price" : "10.0",
+  "image" : "sweet peppers.jpg"
+},
+{
+  "id":6,
+  "code" : "c2",
+  "description" : "corn",
+  "price" : "5.0",
+  "image" : "corn.jpg"
+},
+{
+  "id":7,
+  "code" : "a1",
+  "description" : "avocado",
+  "price" : "10.0",
+  "image" : "avocado.jpg"
+},
+{
+  "id":8,
+  "code" : "b1",
+  "description" : "broccoli",
+  "price" : "12.0",
+  "image" : "broccoli.jpg"
+},
+{
+  "id":9,
+  "code" : "c3",
+  "description" : "carrots",
+  "price" : "5.0",
+  "image" : "carrots.jpg"
+},
+{
+  "id":10,
+  "code" : "o1",
+  "description" : "onions",
+  "price" : "4.0",
+  "image" : "onions.jpg"
+},
+{
+  "id":11,
+  "code" : "k1",
+  "description" : "kohlrabi",
+  "price" : "9.0",
+  "image" : "kohlrabi.jpg"
+},
+{
+  "id":12,
+  "code" : "c4",
+  "description" : "cabbage",
+  "price" : "5.0",
+  "image" : "cabbage.jpg"
+}
+]
+
+
+
+
+
+
+
+
+
+
+
+
+
