@@ -4,6 +4,7 @@ import {Item} from '../../models/Item';
 import {CommonModule} from '@angular/common';
 import { VegetablesService } from '../../services/vegetables.service';
 import { ItemComponent } from '../item/item.component';
+import { vegetablesFilter } from '../../models/vegetables-Filter';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -21,6 +22,7 @@ export class ShoppingCartComponent implements OnInit{
 
   vegetablesService = inject(VegetablesService);
   items : Item[] = [];
+  name : string = '';
 
   ngOnInit(): void {
     this.vegetablesService.getAll().subscribe(v=>{
@@ -28,7 +30,19 @@ export class ShoppingCartComponent implements OnInit{
       console.log(JSON.stringify(v))
 
     });
+    this.name = 'av';
+    this.search();
+  }
 
+  search () : void {
+    const filter : vegetablesFilter = {
+      name : this.name
+    };
+    this.vegetablesService.find(filter).subscribe(items=>
+      {
+        this.items=items
+        console.log(this.items);
+      });
   }
 
 
