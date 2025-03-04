@@ -30,8 +30,8 @@ export class ShoppingCartComponent implements OnInit{
       console.log(JSON.stringify(v))
 
     });
-    this.name = 'av';
-    this.search();
+    // this.name = 'av';
+    // this.search();
   }
 
   search () : void {
