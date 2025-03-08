@@ -25,11 +25,12 @@ export class ShoppingCartComponent implements OnInit{
   name : string = '';
 
   ngOnInit(): void {
-    this.vegetablesService.getAll().subscribe(v=>{
-      this.items.push(...v);
-      console.log(JSON.stringify(v))
+    // this.vegetablesService.getAll().subscribe(v=>{
+    //   this.items.push(...v);
+    //   console.log(JSON.stringify(v))
 
-    });
+    // });
+    this.search();
     // this.name = 'av';
     // this.search();
   }

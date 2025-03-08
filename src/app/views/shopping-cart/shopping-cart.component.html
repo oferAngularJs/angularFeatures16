@@ -6,6 +6,18 @@
 <!-- <div class="col" *ngFor="let currentItem of this.items">
   <app-item [item]="currentItem"></app-item>
 </div> -->
+<div class="row align-items-center">
+  <div class="col-auto">
+    <h2 class="mb-0"><b>Search item to buy:</b></h2>
+  </div>
+  <div class="col-auto">
+    <input type="text" class="form-control" [(ngModel)]="name" />
+  </div>
+  <div class="col-auto">
+    <input type="button" (click)="search()" class="btn btn-outline-success" value="search" />
+  </div>
+</div>
+
 <div class="container">
 <div class="row justify-center">
   <div class="col-4" *ngFor="let currentItem of this.items; let i = index">
