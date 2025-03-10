@@ -1,4 +1,4 @@
-import { Component, inject, model, signal } from '@angular/core';
+import { Component, computed, inject, model, signal } from '@angular/core';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { VegetablesService } from '../../services/vegetables.service';
 import { Item } from '../../models/Item';
@@ -20,6 +20,9 @@ export class ShoppingCart2Component {
     vegetablesService = inject(VegetablesService);
     items = signal<Item[]>([]);
     name = signal('');
+    filterItems = computed(()=>{
+      return this.items().filter(i=>i.description.toLowerCase().includes(this.name()));
+    })
 
     ngOnInit(): void {
       // this.vegetablesService.getAll().subscribe(v=>{
@@ -33,6 +36,10 @@ export class ShoppingCart2Component {
     }
 
     search () : void {
+      /*
+      if we don't use the search button, the search called only once
+      and then filter done by the computed filter
+      */
       const filter : vegetablesFilter = {
         name : this.name()
       };
