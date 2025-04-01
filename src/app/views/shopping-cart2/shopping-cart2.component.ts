@@ -20,6 +20,7 @@ export class ShoppingCart2Component {
     vegetablesService = inject(VegetablesService);
     items = signal<Item[]>([]);
     name = signal('');
+    price = signal<number>(1);
     filterItems = computed(()=>{
       return this.items().filter(i=>i.description.toLowerCase().includes(this.name()));
     })
