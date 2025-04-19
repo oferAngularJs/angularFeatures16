@@ -31,6 +31,7 @@ export class VegetablesService {
     return this.http.get<Item[]>(itemsFile).pipe(
       map((res: Item[]) => {
         if (!filter?.name) {
+          console.log("return all items, name is empty");
           return res; // Return all items if no filter is provided
         }
         // Filter items
