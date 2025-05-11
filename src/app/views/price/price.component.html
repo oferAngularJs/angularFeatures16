@@ -2,6 +2,8 @@
                class="form-control"
                id="changePrice"
                [(ngModel)]="newPrice"
-               [value]="itemPrice"
+               [value]="itemPrice()"
                name="price"
                style="width: 100%;"/>
+
+               <i class="fa-solid fa-floppy-disk" (click)="saveItemPrice()"></i>

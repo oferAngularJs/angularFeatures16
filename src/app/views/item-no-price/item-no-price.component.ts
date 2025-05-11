@@ -30,10 +30,6 @@ export class ItemNoPriceComponent {
     saveItemPrice () {
       this.item.price = this.price();
       this.isBtnEditPricePressed.set(false);
-      var input = document.getElementById('changePrice') as HTMLInputElement;
-      if (input) {
-        input.value = this.price().toString();
-      }
       console.log("Set procut : " + this.item.description + " to price : " + this.price());
 
     }

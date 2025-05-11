@@ -12,7 +12,7 @@
     <!-- Price Input Field -->
     <div style="max-width: 120px; width: 100%;">
       <ng-container *ngIf="isBtnEditPricePressed(); else viewPrice">
-        <app-price [itemPrice]="item.price"></app-price>
+        <app-price [(itemPrice)]="item.price"></app-price>
       </ng-container>
       <ng-template #viewPrice>
         <b>{{ item.price }}</b>
