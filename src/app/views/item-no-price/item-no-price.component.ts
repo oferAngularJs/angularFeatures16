@@ -14,13 +14,13 @@ export class ItemNoPriceComponent {
 
     @Input() item! : Item;
 
-    price = signal<number>(1);
+
 
     isBtnEditPricePressed = signal<boolean>(false);
 
     updateItemPrice() {
       this.isBtnEditPricePressed.set(true);
-      this.price.set(this.item.price);
+
     }
 
     cancel() {
@@ -28,9 +28,9 @@ export class ItemNoPriceComponent {
     }
 
     saveItemPrice () {
-      this.item.price = this.price();
+
       this.isBtnEditPricePressed.set(false);
-      console.log("Set procut : " + this.item.description + " to price : " + this.price());
+      console.log("Set product : " + this.item.description + " to price : " );
 
     }
 

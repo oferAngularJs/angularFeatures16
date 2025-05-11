@@ -6,24 +6,18 @@
   </h2>
 
   <!-- Price Editing Row -->
-  <div class="d-flex align-items-center justify-content-center gap-2 mb-3">
-    <span><strong>Price:</strong></span>
+  <!-- <div class="d-flex align-items-center justify-content-center gap-2 mb-3">
+    <span><strong>Price:</strong></span> -->
 
-    <!-- Price Input Field -->
-    <div style="max-width: 120px; width: 100%;">
-      <ng-container *ngIf="isBtnEditPricePressed(); else viewPrice">
+
         <app-price [(itemPrice)]="item.price"></app-price>
-      </ng-container>
-      <ng-template #viewPrice>
-        <b>{{ item.price }}</b>
-      </ng-template>
-    </div>
+
 
     <!-- Action Icons -->
-    <i class="fas fa-edit" (click)="updateItemPrice()"></i>
+    <!-- <i class="fas fa-edit" (click)="updateItemPrice()"></i>
     <i class="fa-solid fa-floppy-disk" (click)="saveItemPrice()"></i>
-    <i class="fa-solid fa-xmark" (click)="cancel()"></i>
-  </div>
+    <i class="fa-solid fa-xmark" (click)="cancel()"></i> -->
+  <!-- </div> -->
 
   <!-- Image -->
   <img [src]="'/assets/' + item.image" class="img-fluid mb-3" alt="{{ item.description }}">

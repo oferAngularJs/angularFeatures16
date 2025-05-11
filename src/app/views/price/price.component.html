@@ -1,3 +1,8 @@
+<div class="d-flex align-items-center justify-content-center gap-2 mb-3">
+  <span><strong>Price:</strong></span>
+<!-- Price Input Field -->
+<div style="max-width: 120px; width: 100%;">
+  <ng-container *ngIf="isBtnEditPricePressed(); else viewPrice">
 <input type="text"
                class="form-control"
                id="changePrice"
@@ -5,5 +10,15 @@
                [value]="itemPrice()"
                name="price"
                style="width: 100%;"/>
+              </ng-container>
+    <ng-template #viewPrice>
+        <b>{{ itemPrice() }}</b>
+    </ng-template>
+</div>
 
-               <i class="fa-solid fa-floppy-disk" (click)="saveItemPrice()"></i>
+
+               <!-- Action Icons -->
+    <i class="fas fa-edit" (click)="updateItemPrice()"></i>
+    <i class="fa-solid fa-floppy-disk" (click)="saveItemPrice()"></i>
+    <i class="fa-solid fa-xmark" (click)="cancel()"></i>
+</div>

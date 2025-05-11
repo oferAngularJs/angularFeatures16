@@ -20,6 +20,8 @@ export class PriceComponent implements OnInit {
 
   newPrice = signal<number>(1);
 
+  isBtnEditPricePressed = signal<boolean>(false);
+
   constructor() {
     effect(() => {
       console.log("Price changed to: " + this.newPrice());
@@ -27,15 +29,20 @@ export class PriceComponent implements OnInit {
     })
   }
 
+  updateItemPrice() {
+    this.isBtnEditPricePressed.set(true);
+
+  }
 
 
-
-
+  cancel() {
+    this.isBtnEditPricePressed.set(false);
+  }
 
 
   saveItemPrice () {
     this.itemPrice.set(this.newPrice());
-    console.log("Set procut : " + this.itemPrice() + " to price : " + this.newPrice());
+    console.log("Set product : " + this.itemPrice() + " to price : " + this.newPrice());
   }
 
 }
