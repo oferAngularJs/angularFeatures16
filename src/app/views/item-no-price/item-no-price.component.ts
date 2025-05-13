@@ -1,4 +1,4 @@
-import { Component, Input, signal } from '@angular/core';
+import { Component, EventEmitter, Input, Output, signal } from '@angular/core';
 import { Item } from '../../models/Item';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -13,6 +13,8 @@ import { PriceComponent } from '../price/price.component';
 export class ItemNoPriceComponent {
 
     @Input() item! : Item;
+
+    @Output() updatedItem = new EventEmitter<Item>();
 
 
 
@@ -30,8 +32,8 @@ export class ItemNoPriceComponent {
     saveItemPrice () {
 
       this.isBtnEditPricePressed.set(false);
-      console.log("Set product : " + this.item.description + " to price : " );
-
+      console.log("Set product : " + this.item.description + " to price : "+this.item.price);
+      this.updatedItem.emit(this.item);
     }
 
 }
