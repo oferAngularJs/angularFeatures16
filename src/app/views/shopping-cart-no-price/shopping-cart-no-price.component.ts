@@ -54,6 +54,17 @@ export class ShoppingCartNoPriceComponent {
           });
       }
 
+
+     updateItemInList(item : Item) {
+      let orginalListItem : Item[] = this.items();
+      let index = orginalListItem.findIndex(i=>i.id == item.id);
+      if (index !=-1){
+        orginalListItem[index] = item;
+        this.items.set(orginalListItem);
+        console.log("Item updated : " + JSON.stringify(item));
+      }
+
+     }
      saveAll () {
 
      }
