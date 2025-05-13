@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, computed, inject, signal,effect } from '@angular/core';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { VegetablesService } from '../../services/vegetables.service';
 import { Item } from '../../models/Item';
@@ -15,7 +15,10 @@ import { ItemNoPriceComponent } from '../item-no-price/item-no-price.component';
 export class ShoppingCartNoPriceComponent {
 
   constructor(private fb : FormBuilder) {
-    }
+    effect(()=>{
+      console.log("list of items changed to:"+ JSON.stringify(this.items()));
+    })
+  }
 
       vegetablesService = inject(VegetablesService);
       items = signal<Item[]>([]);
@@ -51,5 +54,8 @@ export class ShoppingCartNoPriceComponent {
           });
       }
 
+     saveAll () {
+
+     }
 
 }

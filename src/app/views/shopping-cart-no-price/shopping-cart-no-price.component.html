@@ -23,6 +23,7 @@
 </div>
 
 <div class="container">
+<i class="fa-solid fa-download" (click)="saveAll()"></i>
 <div class="row justify-center">
   <div class="col-4" *ngFor="let currentItem of this.filterItems(); let i = index">
     <app-item-no-price [item]="currentItem"></app-item-no-price>
