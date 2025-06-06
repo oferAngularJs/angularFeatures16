@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, signal } from '@angular/core';
+import { Component, EventEmitter, Input, Output, signal, effect } from '@angular/core';
 import { Item } from '../../models/Item';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -15,25 +15,28 @@ export class ItemNoPriceComponent {
     @Input() item! : Item;
 
     @Output() updatedItem = new EventEmitter<Item>();
+    // isBtnEditPricePressed = signal<boolean>(false);
 
+    // updateItemPrice() {
+    //   this.isBtnEditPricePressed.set(true);
 
+    // }
 
-    isBtnEditPricePressed = signal<boolean>(false);
+    // cancel() {
+    //   this.isBtnEditPricePressed.set(false);
+    // }
 
-    updateItemPrice() {
-      this.isBtnEditPricePressed.set(true);
+    // saveItemPrice () {
 
-    }
+    //   this.isBtnEditPricePressed.set(false);
+    //   console.log("In product : " + this.item.description + "price to price : "+this.item.price);
 
-    cancel() {
-      this.isBtnEditPricePressed.set(false);
-    }
+    // }
 
-    saveItemPrice () {
-
-      this.isBtnEditPricePressed.set(false);
-      console.log("Set product : " + this.item.description + " to price : "+this.item.price);
+    saveNewPriceInItem($event : number) {
+      this.item.price = $event;
       this.updatedItem.emit(this.item);
+      console.log("In product : " + this.item.description + " price to price : "+this.item.price);
     }
 
 }

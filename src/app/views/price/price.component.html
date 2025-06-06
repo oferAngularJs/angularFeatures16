@@ -2,15 +2,16 @@
   <span><strong>Price:</strong></span>
 <!-- Price Input Field -->
 <div style="max-width: 120px; width: 100%;">
-  <ng-container *ngIf="isBtnEditPricePressed(); else viewPrice">
-<input type="text"
+    <ng-container *ngIf="isBtnEditPricePressed(); else viewPrice">
+      <input type="text"
                class="form-control"
                id="changePrice"
                [(ngModel)]="newPrice"
-               [value]="itemPrice()"
+
+
                name="price"
                style="width: 100%;"/>
-              </ng-container>
+    </ng-container>
     <ng-template #viewPrice>
         <b>{{ itemPrice() }}</b>
     </ng-template>

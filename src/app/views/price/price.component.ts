@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, effect, Input, model, OnInit, Output, signal } from '@angular/core';
+import { Component, effect, EventEmitter, Input, model, OnInit, Output, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Item } from '../../models/Item';
 
@@ -10,21 +10,24 @@ import { Item } from '../../models/Item';
   styleUrl: './price.component.css'
 })
 export class PriceComponent implements OnInit {
+
+  newPrice = signal<number>(0);
+
   ngOnInit(): void {
     this.newPrice.set(this.itemPrice());
 
   }
 
-  // @Input() itemPrice!: number;
   itemPrice = model<number>(0);
 
-  newPrice = signal<number>(1);
+
+
 
   isBtnEditPricePressed = signal<boolean>(false);
 
   constructor() {
     effect(() => {
-      console.log("Price changed to: " + this.newPrice());
+
       console.log("Item price changed to: " + this.itemPrice());
     })
   }
@@ -36,13 +39,15 @@ export class PriceComponent implements OnInit {
 
 
   cancel() {
+    this.newPrice.set(this.itemPrice());
     this.isBtnEditPricePressed.set(false);
   }
 
 
   saveItemPrice () {
+
+    this.isBtnEditPricePressed.set(false);
     this.itemPrice.set(this.newPrice());
-    console.log("Set product : " + this.itemPrice() + " to price : " + this.newPrice());
   }
 
 }
