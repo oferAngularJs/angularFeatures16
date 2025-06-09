@@ -1,0 +1,14 @@
+<p>rxjs-example works!
+
+
+<input type="text" [(ngModel)]="txt" (ngModelChange)="changeTxtToUpperCase()"  />
+
+<br/>
+Result : {{txtToUppercase}}
+<br/>
+text from observable {{txtData$ | async}}
+<br/>
+Result (In form of signals) : {{txtSignal()}}
+
+
+
