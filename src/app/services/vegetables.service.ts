@@ -5,8 +5,10 @@ import { Observable } from 'rxjs';
 import { map} from 'rxjs/operators';
 import { Item } from '../models/Item';
 import { vegetablesFilter } from '../models/vegetables-Filter';
+import {saveAs } from 'file-saver';
 
 const itemsFile = '/assets/vegetables.json';
+const itemsOutputFile = '/assets/vegetablesUpdatedList.json';
 
 @Injectable({
   providedIn: 'root'
@@ -46,5 +48,22 @@ export class VegetablesService {
       })
     );
   }
+
+  save (items : Item[]) : Observable<void> {
+    // This method is a stub, as we don't have a backend to save the items
+    // In a real application, you would send a POST or PUT request to your backend API
+    console.log("Saving items:", items);
+    return new Observable<void>(observer => {
+
+        let blob : Blob = new Blob([JSON.stringify(items, null, 2)], { type: 'application/json' });
+        saveAs(blob, itemsOutputFile);
+        console.log("Items saved successfully");
+        observer.next();
+        observer.complete();
+      }
+    );
+
+  }
+
 
 }

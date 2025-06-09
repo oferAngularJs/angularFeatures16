@@ -66,7 +66,19 @@ export class ShoppingCartNoPriceComponent {
 
      }
      saveAll () {
+      this.vegetablesService.save(this.items()).subscribe({
+        next: () => {
+          console.log("Items saved successfully");
+        },
+        error: (err) => {
+          console.error("Error saving items:", err);
+        }
+      });
 
+     }
+
+     changeInItem(item : Item) {
+      console.log("Item price changed to: " + item.price);
      }
 
 }

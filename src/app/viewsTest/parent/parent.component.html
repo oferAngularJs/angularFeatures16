@@ -1,0 +1,20 @@
+<p>parent works!</p>
+
+<app-child  [(childPrice)]="price"></app-child>
+<br>
+Three ways to pass data from parent to child:
+<br>
+<br>
+1. Using Input() decorator and Output decorator
+<br>
+<app-child-method-one [priceMethod_1]="priceMethod_1" (priceMethod_1Change)="priceMethod_1Change($event)"/>
+
+
+<br>
+2. Using signals and update by changing the signal value
+<br>
+<app-child-method-two [(childPriceMethod_2)]="priceMethod_2" />
+<br>
+3. Using model in the child component and using two-way data binding
+<br>
+<app-child-method-three [(childPriceMethod_3)]="priceMethod_3" />
