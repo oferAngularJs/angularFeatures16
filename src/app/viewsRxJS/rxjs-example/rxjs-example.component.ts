@@ -1,14 +1,16 @@
 import {Component, OnInit, Signal} from '@angular/core';
-import {BehaviorSubject, Observable, of, pipe, tap} from 'rxjs';
+import {BehaviorSubject, Observable, of, pipe, Subject, takeUntil, tap} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {FormsModule} from '@angular/forms';
 import {normalizeExtraEntryPoints} from '@angular-devkit/build-angular/src/tools/webpack/utils/helpers';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {CommonModule} from '@angular/common';
+import {unsignedOnDestroyed} from '../unsignedOnDestroyed';
 
 @Component({
   selector: 'app-rxjs-example',
   imports: [FormsModule,CommonModule],
+  standalone : true,
   templateUrl: './rxjs-example.component.html',
   styleUrl: './rxjs-example.component.css'
 })
@@ -41,7 +43,8 @@ export class RxjsExampleComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    of(this.numbers).pipe(map(numbersArr=>{
+    this.fullExampleObserver();
+    of(this.numbers).pipe(takeUntil(unsignedOnDestroyed(this))).pipe(map(numbersArr=>{
       return numbersArr.map(n=> ({
         sourceNumber : n,
         doubleNumber : n * 2
@@ -54,7 +57,6 @@ export class RxjsExampleComponent implements OnInit{
 
 
   }
-
   changeTxtToUpperCase (){
 
 
@@ -65,10 +67,38 @@ export class RxjsExampleComponent implements OnInit{
     //
     // ).subscribe((txtUppercase)=>this.txtToUppercase = txtUppercase);// create always observable may lead to trade off.
     this.txtDataSubject.next(this.txt);
-    this.txtData$.subscribe((txtUpper)=>{
+    this.txtData$.pipe(takeUntil(unsignedOnDestroyed(this))).subscribe((txtUpper)=>{
       console.log(txtUpper);
       this.txtToUppercase = txtUpper;
     });
+  }
+
+  fullExampleObserver () {
+    const fruitData$ = of ('banana','apple');
+
+    const observer  = {
+      next : (fruit:string) => console.log(`i like ${fruit}`),
+      complete : () => console.log('The fruits are empty')
+    };
+
+    fruitData$.pipe(takeUntil(unsignedOnDestroyed(this))).subscribe(observer);
+
+    const subject = new Subject();
+
+    //1
+    subject.subscribe(v=>console.log(v));
+
+    subject.next('Hello world');
+
+    const  behaviorSubject = new  BehaviorSubject('Hi first message');
+
+    behaviorSubject.pipe(takeUntil(unsignedOnDestroyed(this))).subscribe()
+    behaviorSubject.pipe(takeUntil(unsignedOnDestroyed(this))).subscribe(v=>console.log(v));
+
+
+  }
+
+  ngOnDestroy(): void {
   }
 
 }
