@@ -23,7 +23,12 @@
 </div>
 
 <div class="container">
-<i class="fa-solid fa-download" (click)="saveAll()"></i>
+
+<div class="icon-container">
+  <i class="fa-solid fa-download" (click)="saveAll()"></i>
+  <span class="icon-spacer"></span>
+  <i class="fa-solid fa-plus" (click)="openAddingVegetableModal()"></i>
+</div>
 <div class="row justify-center">
   <div class="col-4" *ngFor="let currentItem of this.filterItems(); let i = index">
     <app-item-no-price [item]="currentItem" (updatedItem)="changeInItem($event)"></app-item-no-price>

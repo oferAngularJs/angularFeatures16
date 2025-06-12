@@ -1,4 +1,4 @@
-import { Component, computed, inject, model, signal } from '@angular/core';
+import {Component, computed, effect, inject, model, signal} from '@angular/core';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { VegetablesService } from '../../services/vegetables.service';
 import { Item } from '../../models/Item';
@@ -15,6 +15,9 @@ import { ItemComponent } from '../item/item.component';
 export class ShoppingCart2Component {
 
   constructor(private fb : FormBuilder) {
+    effect(()=>{
+      console.log(this.name());
+    })
   }
 
     vegetablesService = inject(VegetablesService);

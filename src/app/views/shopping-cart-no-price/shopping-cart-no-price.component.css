@@ -1,0 +1,13 @@
+.icon-container {
+  display: flex;
+  align-items: center;
+}
+
+.icon-spacer {
+  width: 25px; /* Adjust for desired space  */
+  display: inline-block;
+}
+
+.fa-download, .fa-plus {
+  cursor: pointer; /* Makes the icons look clickable */
+}
