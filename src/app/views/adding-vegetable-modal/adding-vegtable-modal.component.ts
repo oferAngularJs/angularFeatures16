@@ -49,5 +49,10 @@ export class AddingVegetableModalComponent implements OnInit{
     }
   }
 
+  clear () {
+    this.fileName = this.fileMsgForNotSelected;
+    this.selectedFile = null;
+  }
+
 
 }

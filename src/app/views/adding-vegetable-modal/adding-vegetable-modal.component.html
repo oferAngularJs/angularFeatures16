@@ -24,7 +24,9 @@
 
 
     <span>{{ fileName }}</span>
-
+    <div *ngIf="selectedFile">
+      <i class="fa-solid fa-xmark" (click)="clear()"></i>
+    </div>
 
 
 
