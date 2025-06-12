@@ -1,0 +1,40 @@
+<mat-dialog-actions align="start">
+  <button mat-icon-button mat-dialog-close aria-label="Close dialog">
+    <mat-icon>close</mat-icon> <!-- This is the "X" icon -->
+  </button>
+</mat-dialog-actions>
+<h2 mat-dialog-title >Insert new vegetable :</h2>
+
+<mat-dialog-content class="mat-typography mt-4">
+  <div [formGroup]="newVegetableForm">
+  <h3>Name : <input type="text" formControlName="name" maxlength="20"/></h3>
+
+
+  <h3>Price : <input type="text" formControlName="price" [min]="0" max="100" /></h3>
+
+
+  <h3>Upload image :</h3>
+
+    <div *ngIf="!selectedFile">
+    <label for="imgFileInput" class="custom-file-upload">
+      Choose File
+    </label>
+    <input type="file"  formControlName="image" id="imgFileInput" style="display:none;" (change)="selectedImgFile($event)" accept="image/*" />
+    </div>
+
+
+    <span>{{ fileName }}</span>
+
+
+
+
+  </div>
+
+
+
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+
+  <button matButton [mat-dialog-close]="true"  cdkFocusInitial>Save</button>
+</mat-dialog-actions>
+

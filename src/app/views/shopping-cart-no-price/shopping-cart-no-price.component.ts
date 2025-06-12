@@ -5,14 +5,21 @@ import { VegetablesService } from '../../services/vegetables.service';
 import { Item } from '../../models/Item';
 import { vegetablesFilter } from '../../models/vegetables-Filter';
 import { ItemNoPriceComponent } from '../item-no-price/item-no-price.component';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatButtonModule} from '@angular/material/button';
+import {MatDialog, MatDialogModule} from '@angular/material/dialog';
+import {AddingVegetableModalComponent} from '../adding-vegetable-modal/adding-vegtable-modal.component';
 
 @Component({
   selector: 'app-shopping-cart-no-price',
-  imports: [FormsModule, ReactiveFormsModule, CommonModule,ItemNoPriceComponent],
+  imports: [FormsModule, ReactiveFormsModule, CommonModule,ItemNoPriceComponent,MatButtonModule,MatDialogModule],
+  standalone : true,
   templateUrl: './shopping-cart-no-price.component.html',
   styleUrl: './shopping-cart-no-price.component.css'
 })
 export class ShoppingCartNoPriceComponent {
+
+  readonly dialog = inject(MatDialog);
 
   constructor(private fb : FormBuilder) {
     effect(()=>{
@@ -77,8 +84,17 @@ export class ShoppingCartNoPriceComponent {
 
      }
 
+    openAddingVegetableModal () {
+      console.log("open Adding vegetable modal window");
+      const dialogAddingVegetableModelRef = this.dialog.open(AddingVegetableModalComponent,{
+        height: '600px',
+        width: '600px',
+      });
+    }
+
      changeInItem(item : Item) {
       console.log("Item price changed to: " + item.price);
+
      }
 
 }
