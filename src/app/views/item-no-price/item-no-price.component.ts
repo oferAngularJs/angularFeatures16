@@ -7,6 +7,7 @@ import { PriceComponent } from '../price/price.component';
 @Component({
   selector: 'app-item-no-price',
   imports: [CommonModule,FormsModule,PriceComponent],
+  standalone : true,
   templateUrl: './item-no-price.component.html',
   styleUrl: './item-no-price.component.css'
 })

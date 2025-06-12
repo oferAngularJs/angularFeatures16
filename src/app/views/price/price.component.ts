@@ -6,6 +6,7 @@ import { Item } from '../../models/Item';
 @Component({
   selector: 'app-price',
   imports: [CommonModule,FormsModule],
+  standalone : true,
   templateUrl: './price.component.html',
   styleUrl: './price.component.css'
 })
