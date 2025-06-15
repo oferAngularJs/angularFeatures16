@@ -8,7 +8,7 @@ import { vegetablesFilter } from '../models/vegetables-Filter';
 import {saveAs } from 'file-saver';
 
 const itemsFile = '/assets/vegetables.json';
-const itemsOutputFile = '/assets/vegetablesUpdatedList.json';
+const itemsOutputFile = 'updated_vegetablesUpdatedList.json';
 
 @Injectable({
   providedIn: 'root'
