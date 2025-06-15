@@ -7,7 +7,7 @@
 
 <mat-dialog-content class="mat-typography mt-4">
   <div [formGroup]="newVegetableForm">
-  <h3>Name : <input type="text" formControlName="name" maxlength="20"/></h3>
+  <h3>Name : <input type="text" formControlName="name" maxlength="20" /></h3>
 
 
   <h3>Price : <input type="text" formControlName="price" [min]="0" max="100" /></h3>
@@ -37,6 +37,6 @@
 </mat-dialog-content>
 <mat-dialog-actions align="center">
 
-  <button matButton [mat-dialog-close]="true"  cdkFocusInitial>Save</button>
+  <button matButton [mat-dialog-close]="true" [disabled]="!newVegetableForm.valid" (click)="saveNewVegetable ()">Save</button>
 </mat-dialog-actions>
 

@@ -1,21 +1,23 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
-import {MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule} from '@angular/material/dialog';
+import {MAT_DIALOG_DEFAULT_OPTIONS, MatDialogRef, MatDialogModule} from '@angular/material/dialog';
 import {MatIconModule} from '@angular/material/icon';
 import {FormBuilder, FormGroup, FormsModule, RequiredValidator, Validators,ReactiveFormsModule} from '@angular/forms';
 import {NgIf} from '@angular/common';
 
 @Component({
-  selector: 'app-adding-vegtable-modal',
+  selector: 'app-adding-vegetable-modal',
   imports: [FormsModule, ReactiveFormsModule, MatIconModule, MatButtonModule, MatDialogModule, NgIf],
   standalone : true,
   providers: [
     { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: false } }
   ],
   templateUrl: './adding-vegetable-modal.component.html',
-  styleUrl: './adding-vegtable-modal.component.css'
+  styleUrl: './adding-vegetable-modal.component.css'
 })
 export class AddingVegetableModalComponent implements OnInit{
+
+
 
   newVegetableForm! : FormGroup;
 
@@ -25,7 +27,7 @@ export class AddingVegetableModalComponent implements OnInit{
 
   selectedFile : File| null = null;
 
-  constructor(private fb:FormBuilder) {
+  constructor(private fb:FormBuilder,private matDialogRef:MatDialogRef<AddingVegetableModalComponent>) {
   }
 
   ngOnInit(): void {
@@ -44,14 +46,19 @@ export class AddingVegetableModalComponent implements OnInit{
     if (this.selectedFile!.name){
       this.fileName = this.selectedFile!.name;
     }else {
-      this.fileName = this.fileMsgForNotSelected;
-      this.selectedFile = null;
+      this.clear();
     }
   }
 
   clear () {
     this.fileName = this.fileMsgForNotSelected;
     this.selectedFile = null;
+    this.newVegetableForm.controls['image'].setValue('');
+  }
+
+  saveNewVegetable () {
+    console.log("The date that saved :"+JSON.stringify(this.newVegetableForm.value));
+    this.matDialogRef.close(this.newVegetableForm);
   }
 
 

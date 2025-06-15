@@ -8,7 +8,8 @@ import { ItemNoPriceComponent } from '../item-no-price/item-no-price.component';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatButtonModule} from '@angular/material/button';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
-import {AddingVegetableModalComponent} from '../adding-vegetable-modal/adding-vegtable-modal.component';
+import {AddingVegetableModalComponent} from '../adding-vegetable-modal/adding-vegetable-modal.component';
+
 
 @Component({
   selector: 'app-shopping-cart-no-price',
@@ -63,11 +64,11 @@ export class ShoppingCartNoPriceComponent {
 
 
      updateItemInList(item : Item) {
-      let orginalListItem : Item[] = this.items();
-      let index = orginalListItem.findIndex(i=>i.id == item.id);
+      let originalListItem : Item[] = this.items();
+      let index = originalListItem.findIndex(i=>i.id == item.id);
       if (index !=-1){
-        orginalListItem[index] = item;
-        this.items.set(orginalListItem);
+        originalListItem[index] = item;
+        this.items.set(originalListItem);
         console.log("Item updated : " + JSON.stringify(item));
       }
 
@@ -89,7 +90,12 @@ export class ShoppingCartNoPriceComponent {
       const dialogAddingVegetableModelRef = this.dialog.open(AddingVegetableModalComponent,{
         height: '600px',
         width: '600px',
+        disableClose : true
       });
+
+      dialogAddingVegetableModelRef.afterClosed().subscribe(vegetableData=>{
+
+      })
     }
 
      changeInItem(item : Item) {
