@@ -93,8 +93,16 @@ export class ShoppingCartNoPriceComponent {
         disableClose : true
       });
 
-      dialogAddingVegetableModelRef.afterClosed().subscribe(vegetableData=>{
-
+      dialogAddingVegetableModelRef.afterClosed().subscribe(vegetableDataForm=>{
+        let vegetableDataValue = vegetableDataForm.value;
+        let newItem : Item = {
+            id : this.items().length + 1,
+            code : vegetableDataValue.name.charAt(0) + (this.items().length + 1),
+            description: vegetableDataValue.name,
+            price: vegetableDataValue.price,
+            image: "assets/images/vegetables/" + vegetableDataValue.image,
+          }
+          console.log("New item created: " + JSON.stringify(newItem));
       })
     }
 
